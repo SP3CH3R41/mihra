@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mihra Davet & Kafe | Yozgat</title>
+    
+    <!-- SEKMELER ARASINDA GEÇERKEN GÖRÜNECEK AMBLEM (FAVICON) KODU -->
+    <link rel="icon" href="resimler/logo.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GENEL AYARLAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fcfbf7;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            color: #2c4a3e;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .sub-title {
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #b89244;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .line {
+            width: 60px;
+            height: 2px;
+            background-color: #b89244;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- MENÜ (NAVBAR) VE LOGO ALANI --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.96);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #b89244;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #2c4a3e;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b89244;
+        }
+
+        /* --- GİRİŞ (HERO) BÖLÜMÜ --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+                        url('resimler/hero-arka-plan.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+            background-color: #2c4a3e;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: #f4f4f4;
+            margin-bottom: 40px;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #b89244;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #9e7b35;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #fff;
+            color: #232323;
+            transform: translateY(-3px);
+        }
+
+        /* --- BLOK DÜZENLERİ VE FOTOĞRAF GALERİSİ --- */
+        .row {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .text-block {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features-list {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .features-list li {
+            font-size: 15px;
+            color: #444;
+            background: rgba(184, 146, 68, 0.08);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(184, 146, 68, 0.2);
+        }
+
+        .features-list li span {
+            color: #b89244;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            background-color: #eae7dc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            border: 2px dashed #b89244;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item::before {
+            content: "📸 Resim Alanı";
+            color: #9e7b35;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- ÖNE ÇIKAN LEZZETLER KARTLARI --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-card-img-placeholder {
+            width: 100%;
+            height: 220px;
+            background-color: #f0ede6;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 13px;
+            position: relative;
+        }
+
+        .menu-card-img-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .menu-card h3 {
+            font-size: 20px;
+            color: #2c4a3e;
+            margin-bottom: 10px;
+        }
+
+        .menu-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* --- DİJİTAL QR MENÜ ALANI --- */
+        .qr-menu-section {
+            background-color: #2c4a3e;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 12px;
+            margin: 40px auto;
+            max-width: 1160px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .qr-menu-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .qr-menu-section p {
+            font-size: 16px;
+            color: #e0eae5;
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+        }
+
+        .qr-menu-btn {
+            background-color: #b89244;
+            color: #fff;
+            padding: 16px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(184, 146, 68, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .qr-menu-btn:hover {
+            background-color: #fff;
+            color: #2c4a3e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- ULAŞIM & İLETİŞİM ALANI --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: #2c4a3e;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .contact-details li {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #444;
+        }
+
+        .contact-details li a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        .contact-details li a:hover {
+            color: #b89244;
+        }
+
+        .contact-details i {
+            color: #b89244;
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .contact-details i.fa-instagram {
+            color: #e1306c;
+        }
+
+        /* YOL TARİFİNİ BAŞLATAN DÜĞME */
+        .nav-launch-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: #b89244;
+            color: #fff;
+            padding: 18px 25px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(184, 146, 68, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .nav-launch-btn:hover {
+            background-color: #2c4a3e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(44, 74, 62, 0.4);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(184, 146, 68, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(184, 146, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(184, 146, 68, 0); }
+        }
+
+        .contact-map {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 380px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #ddd;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1e332b;
+            color: #fff;
+            text-align: center;
+            padding: 35px 0;
+            font-size: 14px;
+            border-top: 4px solid #b89244;
+        }
+
+        footer span {
+            color: #b89244;
+            font-weight: 600;
+        }
+
+        /* Mobil Ayarları */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 5%; }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .contact-wrapper { grid-template-columns: 1fr; padding: 20px; }
+            .qr-menu-section { margin: 20px 20px; padding: 40px 20px; }
+            .qr-menu-section h2 { font-size: 1.8rem; }
+            .photo-gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <!-- AMBLEMLİ YENİ LOGO ALANI -->
+            <a href="#anasayfa" class="logo-wrapper">
+                <img src="resimler/logo.png" alt="Mihra Amblem" class="logo-img">
+                <span class="logo-text">MİHRA</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#anasayfa">Anasayfa</a></li>
+                <li><a href="#davet-salonu">Davet Salonu</a></li>
+                <li><a href="#kafe-restoran">Kafe & Restoran</a></li>
+                <li><a href="#lezzetler">Öne Çıkanlar</a></li>
+                <li><a href="#iletisim">Ulaşım & İletişim</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="anasayfa" class="hero">
+        <div class="hero-content">
+            <h1>MİHRA</h1>
+            <p class="tagline">Özel Günlerin Ev Sahibi, Keyifli Anların Adresi</p>
+            <div class="hero-buttons">
+                <a href="#davet-salonu" class="btn btn-primary">💍 Davet & Düğün Salonu</a>
+                <a href="#kafe-restoran" class="btn btn-secondary">☕ Kafe & Restoran</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DÜĞÜN SALONU BÖLÜMÜ -->
+    <section id="davet-salonu" class="section container">
+        <div class="row">
+            <div class="text-block">
+                <span class="sub-title">Unutulmaz Anlar</span>
+                <h2>Mihra Davet & Düğün Salonu</h2>
+                <div class="line" style="margin: 15px auto 25px auto;"></div>
+                <p>Hayatınızın en mutlu gününü riske atmayın. Yüksek tavanlı, ferah, modern iklimlendirme sistemlerine sahip ve profesyonel organizasyon ekibiyle desteklenen salonumuzda 500 kişiye kadar misafir ağırlayabiliyoruz. Yemekli veya yemeksiz organizasyon seçeneklerimizle hizmetinizdeyiz.</p>
+                <ul class="features-list">
+                    <li><span>✓</span> Profesyonel Ses, Işık ve Sahne Sistemleri</li>
+                    <li><span>✓</span> Kişiye Özel Konsept ve Masa Süslemeleri</li>
+                    <li><span>✓</span> Zengin Yemekli / Kokteyl Menü Alternatifleri</li>
+                    <li><span>✓</span> Geniş Otopark Alanı</li>
+                </ul>
+            </div>
+            
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="resimler/salon1.jpg" alt="Mihra Salon Görsel 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="resimler/salon2.jpg" alt="Mihra Salon Görsel 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="resimler/salon3.jpg" alt="Mihra Salon Görsel 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAFE & RESTORAN BÖLÜMÜ -->
+    <section id="kafe-restoran" class="section" style="background-color: #fff;">
+        <div class="container row">
+            <div class="text-block">
+                <span class="sub-title">Lezzet ve Huzur</span>
+                <h2>Mihra Kafe & Lezzet Dünyası</h2>
+                <div class="line" style="margin: 15px auto 25px auto;"></div>
+                <p>Haftanın her günü, ailenizle ve sevdiklerinizle birlikte nezih bir ortamda vakit geçirmek için kafe bölümümüz hizmetinizde. Usta şeflerimizin ellerinden çıkan nefis akşam yemekleri, zengin kahvaltı seçenekleri, taze tatlılar ve dünya kahveleriyle aile konseptine uygun sıcak bir ortam.</p>
+                <ul class="features-list">
+                    <li><span>✓</span> Dünya Mutfağından Seçkin Izgara ve Yemekler</li>
+                    <li><span>✓</span> Serpme ve Tabak Kahvaltı Seçenekleri</li>
+                    <li><span>✓</span> Özel Çekim Kahveler & Günlük Taze Tatlılar</li>
+                    <li><span>✓</span> Nezih ve Güvenli Aile Ortamı</li>
+                </ul>
+            </div>
+            
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="resimler/kafe1.jpg" alt="Mihra Kafe Görsel 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="resimler/kafe2.jpg" alt="Mihra Kafe Görsel 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="resimler/kafe3.jpg" alt="Mihra Kafe Görsel 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÖNE ÇIKAN LEZZETLER -->
+    <section id="lezzetler" class="section container">
+        <span class="sub-title">Menümüzden Seçmeler</span>
+        <h2 class="section-title">Öne Çıkan Lezzetler</h2>
+        <div class="line"></div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-card-img-placeholder">
+                    📸 Yemek Resmi
+                    <img src="resimler/yemek.jpg" alt="Özel Mihra Izgara">
+                </div>
+                <h3>Özel Mihra Izgara</h3>
+                <p>Usta şeflerimizin özel sosuyla marine edilmiş, taptaze sebzeler eşliğinde sunulan lezzet şöleni.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-img-placeholder">
+                    📸 Kahve Resmi
+                    <img src="resimler/kahve.jpg" alt="Dünya Kahveleri">
+                </div>
+                <h3>Dünya Kahveleri</h3>
+                <p>Özenle seçilmiş taze kahve çekirdeklerinden, tam kıvamında hazırlanan imza kahvelerimiz.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-card-img-placeholder">
+                    📸 Tatlı Resmi
+                    <img src="resimler/tatli.jpg" alt="Günlük Taze Tatlılar">
+                </div>
+                <h3>Günlük Taze Tatlılar</h3>
+                <p>Her gün taze üretilen, kahvenizin yanına çok yakışacak premium pasta ve tatlı çeşitleri.</p>
+            </div>
+        </div>
+
+        <!-- DİJİTAL QR MENÜ BUTON ALANI -->
+        <div class="qr-menu-section">
+            <h2>Dijital QR Menümüz</h2>
+            <p>Masalarımızdaki QR kodları taratarak veya aşağıdaki butona tıklayarak güncel yemek, tatlı ve içecek menümüze anında ulaşabilirsiniz.</p>
+            <a href="BURAYA_MENU_LINKINI_YAPISTIR" target="_blank" class="qr-menu-btn">
+                <i class="fas fa-qrcode"></i> Dijital Menüyü İncele
+            </a>
+        </div>
+    </section>
+
+    <!-- İLETİŞİM VE HARİTA -->
+    <section id="iletisim" class="section container">
+        <span class="sub-title">Bize Ulaşın</span>
+        <h2 class="section-title">İletişim & Konum</h2>
+        <div class="line"></div>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Mihra Kompleksi</h3>
+                <ul class="contact-details">
+                    <li><i class="fas fa-map-marker-alt"></i> Erdoğan Akdağ Mah. Yimpaş AVM, Kat: 4, 66100 Yozgat Merkez/Yozgat</li>
+                    <li><i class="fas fa-phone"></i> <a href="tel:03543333360">0354 333 33 60</a></li>
+                    <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/mihrarestorancafe/" target="_blank">mihradavetkafe</a></li>
+                    <li><i class="fas fa-clock"></i> Çalışma Saatleri: 08:30 - 23:30</li>
+                </ul>
+
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Yimpaş+AVM+Yozgat" target="_blank" class="nav-launch-btn">
+                    <i class="fas fa-route"></i> Arabada Yol Tarifini Başlat
+                </a>
+            </div>
+
+            <div class="contact-map">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3056.8834614144415!2d34.80527747651036!3d39.83199898171728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x408045501fb7e96b%3A0x7d6c5df5eb4ad910!2zWWltcGHFnyBBVk0!5e0!3m2!1str!2str!4v1719999999999!5m2!1str!2str" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 <span>Mihra Davet & Kafe</span>. Tüm Hakları Saklıdır.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
